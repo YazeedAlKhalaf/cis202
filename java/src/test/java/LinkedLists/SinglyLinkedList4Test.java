@@ -226,4 +226,44 @@ class SinglyLinkedList4Test {
 
         assertEquals("[ 195, 405, 375, 475, 400, 3045, 624, 7852, 285, ]", testList.toString());
     }
+
+    @Test
+    void removeLast_ShouldReturnNullIfListIsEmpty() {
+        assertEquals(null, testList.removeLast());
+    }
+
+    @Test
+    void removeLast_ShouldReturnFirstElementIfListHasSize1() {
+        testList.addFirst(100);
+
+        assertEquals(1, testList.getSize());
+        assertEquals(100, testList.removeLast());
+        assertEquals(0, testList.getSize());
+    }
+
+    @Test
+    void removeLast_ShouldDeleteTheLastElementAndReturnItWhenListHasSizeOf3() {
+        testList.addFirst(100);
+        testList.addFirst(200);
+        testList.addFirst(300);
+
+        assertEquals(3, testList.getSize());
+        assertEquals(100, testList.removeLast());
+        assertEquals(2, testList.getSize());
+    }
+
+    @Test
+    void removeLast_ShouldDeleteTheLastElement3TimesAndReturnItWhenListHasSizeOf3() {
+        testList.addFirst(100);
+        testList.addFirst(200);
+        testList.addFirst(300);
+
+        assertEquals(3, testList.getSize());
+        assertEquals(100, testList.removeLast());
+        assertEquals(2, testList.getSize());
+        assertEquals(200, testList.removeLast());
+        assertEquals(1, testList.getSize());
+        assertEquals(300, testList.removeLast());
+        assertEquals(0, testList.getSize());
+    }
 }
