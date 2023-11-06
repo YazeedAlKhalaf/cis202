@@ -2,7 +2,8 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
-    LinkedList<String> menu = new LinkedList<>();
+    static LinkedList<String> menu = new LinkedList<>();
+    static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
 
@@ -27,7 +28,7 @@ public class Main {
                 default:
                     System.out.println("Sorry! We don't know how to handle this request, please try again.");
                     System.out.print("Click any key to continue...");
-                    new Scanner(System.in).nextLine();
+                    input.nextLine();
                     break;
             }
             operation = getOperation();
@@ -35,8 +36,6 @@ public class Main {
     }
 
     public static String getOperation() {
-        Scanner input = new Scanner(System.in);
-
         System.out.println("The LinkedList menu:");
         System.out.println("1) Insert at first");
         System.out.println("2) Insert at last");
