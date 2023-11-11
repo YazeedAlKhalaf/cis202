@@ -6,10 +6,9 @@ public class Main {
     static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
-
-
         String operation = getOperation();
         do {
+            System.out.println("========");
             switch (operation) {
                 case "1": insertAtFirst(); break;
                 case "2": insertAtLast(); break;
@@ -23,6 +22,7 @@ public class Main {
                 case "10": countOfNodes(); break;
                 case "q":
                     System.out.println("Good Bye!");
+                    System.out.println("========");
                     System.exit(0);
                     break;
                 default:
@@ -31,6 +31,7 @@ public class Main {
                     input.nextLine();
                     break;
             }
+            System.out.println("========");
             operation = getOperation();
         } while(true);
     }
@@ -69,7 +70,9 @@ public class Main {
 
     public static void display() {}
 
-    public static void isEmpty() {}
+    public static void isEmpty() {
+        System.out.println(menu.isEmpty() ? "The list is empty." : "The list is not empty.");
+    }
 
     public static void countOfNodes() {}
 }
