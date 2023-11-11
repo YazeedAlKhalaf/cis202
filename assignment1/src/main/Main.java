@@ -32,7 +32,7 @@ public class Main {
                     break;
             }
 
-            System.out.print("Click any key to continue...");
+            System.out.print("Click enter to continue...");
             input.nextLine();
             System.out.println("========");
 

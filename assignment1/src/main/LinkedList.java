@@ -25,9 +25,33 @@ public class LinkedList<Type> {
         this.size = 0;
     }
 
-    public void insertAtFirst(Type element) {}
+    public void insertAtFirst(Type element) {
+        if (head == null) {
+            head = new Node<>(element, null);
+        } else {
+            Node<Type> newNode = new Node<>(element, head);
+            head = newNode;
+        }
 
-    public void insertAtLast(Type element) {}
+        size++;
+    }
+
+    public void insertAtLast(Type element) {
+        if (head == null) {
+            insertAtFirst(element);
+            return;
+        }
+
+        Node<Type> tail = head;
+        while (tail.getNext() != null) {
+            tail = tail.getNext();
+        }
+
+        Node<Type> newNode = new Node<>(element, null);
+        tail.setNext(newNode);
+
+        size++;
+    }
 
     public Type deleteAtFirst() { return null; }
 
@@ -41,10 +65,24 @@ public class LinkedList<Type> {
 
     @Override
     public String toString() {
-        return "";
+        StringBuilder sb = new StringBuilder();
+        sb.append("[ ");
+
+        Node<Type> curr = head;
+        do {
+            sb.append(curr.getElement());
+            if (curr.getNext() != null) { sb.append(", "); }
+            curr = curr.getNext();
+        } while(curr != null);
+
+        sb.append(" ]");
+
+        return sb.toString();
     }
 
-    public void display() {}
+    public void display() {
+        System.out.println(this);
+    }
 
     public boolean isEmpty() { return size == 0; }
 
