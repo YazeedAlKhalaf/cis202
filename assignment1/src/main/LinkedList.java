@@ -42,20 +42,54 @@ public class LinkedList<Type> {
             return;
         }
 
-        Node<Type> tail = head;
-        while (tail.getNext() != null) {
-            tail = tail.getNext();
-        }
-
         Node<Type> newNode = new Node<>(element, null);
+
+        Node<Type> tail = getTail();
         tail.setNext(newNode);
 
         size++;
     }
 
-    public Type deleteAtFirst() { return null; }
+    public Type deleteAtFirst() {
+        if (size == 0) { return null; }
 
-    public Type deleteAtLast() { return null; }
+        Node<Type> nodeToBeDeleted = head;
+
+        if (size == 1) {
+            head = null;
+        } else {
+            head = nodeToBeDeleted.getNext();
+        }
+
+        size--;
+
+        return nodeToBeDeleted.getElement();
+    }
+
+    public Type deleteAtLast() {
+        if (size == 0) { return null; }
+
+        Node<Type> nodeToBeDeleted = null;
+
+        if (size == 1) {
+            nodeToBeDeleted = head;
+            head = null;
+        } else {
+            Node<Type> beforeTail = null;
+            Node<Type> tail = head;
+            while (tail.getNext() != null) {
+                beforeTail = tail;
+                tail = tail.getNext();
+            }
+
+            beforeTail.setNext(null);
+            nodeToBeDeleted = tail;
+        }
+
+        size--;
+
+        return nodeToBeDeleted.getElement();
+    }
 
     public Node<Type> search(Type element) { return null; }
 
@@ -65,6 +99,10 @@ public class LinkedList<Type> {
 
     @Override
     public String toString() {
+        if (head == null) {
+            return "[]";
+        }
+
         StringBuilder sb = new StringBuilder();
         sb.append("[ ");
 
@@ -87,4 +125,13 @@ public class LinkedList<Type> {
     public boolean isEmpty() { return size == 0; }
 
     public int countOfNodes() { return size; }
+
+    private Node<Type> getTail() {
+        Node<Type> tail = head;
+        while (tail.getNext() != null) {
+            tail = tail.getNext();
+        }
+
+        return tail;
+    }
 }

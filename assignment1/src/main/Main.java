@@ -84,11 +84,21 @@ public class Main {
 
     private static void deleteAtFirst() {
         String deletedElement =  menuList.deleteAtFirst();
+        if (deletedElement == null) {
+            System.out.println("No element has been deleted, please add an element first!");
+            return;
+        }
+
         System.out.println("'" + deletedElement + "' has been deleted at first successfully!");
     }
 
     private static void deleteAtLast() {
         String deletedElement =  menuList.deleteAtLast();
+        if (deletedElement == null) {
+            System.out.println("No element has been deleted, please add an element first!");
+            return;
+        }
+
         System.out.println("'" + deletedElement + "' has been deleted at last successfully!");
     }
 
