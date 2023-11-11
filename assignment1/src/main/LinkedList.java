@@ -7,6 +7,14 @@ public class LinkedList<Type> {
             this.element = element;
             this.next = next;
         }
+
+        public Type getElement() { return element; }
+
+        public void setElement(Type element) { this.element = element; }
+
+        public Node<Type> getNext() { return next; }
+
+        public void setNext(Node<Type> next) { this.next = next; }
     }
 
     private Node<Type> head;
@@ -30,6 +38,11 @@ public class LinkedList<Type> {
     public void insertBeforeElement(Type element) {}
 
     public void insertAfterElement(Type element) {}
+
+    @Override
+    public String toString() {
+        return "";
+    }
 
     public void display() {}
 

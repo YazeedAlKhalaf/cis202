@@ -1,10 +1,12 @@
 import java.util.Scanner;
 
 public class Main {
-    static LinkedList<String> menu = new LinkedList<>();
-    static Scanner input = new Scanner(System.in);
+    private static LinkedList<String> menuList = new LinkedList<>();
+    private static Scanner input = new Scanner(System.in);
 
     public static void main(String[] args) {
+        printHeader();
+
         String operation = getOperation();
         do {
             System.out.println("========");
@@ -26,16 +28,28 @@ public class Main {
                     break;
                 default:
                     System.out.println("Sorry! We don't know how to handle this request, please try again.");
-                    System.out.print("Click any key to continue...");
-                    input.nextLine();
                     break;
             }
+
+            System.out.print("Click any key to continue...");
+            input.nextLine();
             System.out.println("========");
+
             operation = getOperation();
         } while(true);
     }
 
-    public static String getOperation() {
+    private static void printHeader() {
+        String[] headerText = new String[]{
+                "You just launched the most powerful menu app,",
+                "it saves your items using the linked list magic :)",
+                "",
+                "Made with {RED}<3{RESET} by https://github.com/YazeedAlKhalaf",
+        };
+        BoxPrinter.printBoxedText(headerText);
+    }
+
+    private static String getOperation() {
         System.out.println("The LinkedList menu:");
         System.out.println("1) Insert at first");
         System.out.println("2) Insert at last");
@@ -53,25 +67,56 @@ public class Main {
         return input.nextLine();
     }
 
-    public static void insertAtFirst() {}
-
-    public static void insertAtLast() {}
-
-    public static void deleteAtFirst() {}
-
-    public static void deleteAtLast() {}
-
-    public static void search() {}
-
-    public static void insertBeforeElement() {}
-
-    public static void insertAfterElement() {}
-
-    public static void display() {}
-
-    public static void isEmpty() {
-        System.out.println(menu.isEmpty() ? "The list is empty." : "The list is not empty.");
+    private static void insertAtFirst() {
+        System.out.print("> Enter the name of the menu item to add: ");
+        String userInput = input.nextLine();
+        menuList.insertAtFirst(userInput);
+        System.out.println("'" + userInput + "' has been inserted at first successfully!");
     }
 
-    public static void countOfNodes() {}
+    private static void insertAtLast() {
+        System.out.print("> Enter the name of the menu item to add: ");
+        String newElement = input.nextLine();
+        menuList.insertAtLast(newElement);
+        System.out.println("'" + newElement + "' has been inserted at last successfully!");
+    }
+
+    private static void deleteAtFirst() {
+        String deletedElement =  menuList.deleteAtFirst();
+        System.out.println("'" + deletedElement + "' has been deleted at first successfully!");
+    }
+
+    private static void deleteAtLast() {
+        String deletedElement =  menuList.deleteAtLast();
+        System.out.println("'" + deletedElement + "' has been deleted at last successfully!");
+    }
+
+    private static void search() {
+        System.out.print("> Enter the name of the menu item to search for: ");
+        String searchWord = input.nextLine();
+
+        LinkedList.Node<String> result = menuList.search(searchWord);
+        if (result == null) {
+            System.out.println("We didn't find any element matching the name you provided: " + searchWord);
+            return;
+        }
+
+        System.out.println("We found the element you searched for: " + result.getElement());
+    }
+
+    private static void insertBeforeElement() {}
+
+    private static void insertAfterElement() {}
+
+    private static void display() {
+        menuList.display();
+    }
+
+    private static void isEmpty() {
+        System.out.println(menuList.isEmpty() ? "The list is empty." : "The list is not empty.");
+    }
+
+    private static void countOfNodes() {
+        System.out.println("The count of nodes in the menu is: " + menuList.countOfNodes());
+    }
 }
