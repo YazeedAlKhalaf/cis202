@@ -115,7 +115,20 @@ public class Main {
         System.out.println("We found the element you searched for: " + result.getElement());
     }
 
-    private static void insertBeforeElement() {}
+    private static void insertBeforeElement() {
+        System.out.print("> Enter the name of the menu item to add the new item before: ");
+        String searchWord = input.nextLine();
+
+        System.out.print("> Enter the name of the menu item to add: ");
+        String newElement = input.nextLine();
+
+        boolean isSuccess = menuList.insertBeforeElement(searchWord, newElement);
+        if (isSuccess) {
+            System.out.println("The new element '" + newElement + "' has been added before '" + searchWord + "'");
+        } else {
+            System.out.println("We couldn't add the element for you, something went wrong! Check the spelling of the menu item to add before.");
+        }
+    }
 
     private static void insertAfterElement() {
         System.out.print("> Enter the name of the menu item to add the new item after: ");
@@ -128,7 +141,7 @@ public class Main {
         if (isSuccess) {
             System.out.println("The new element '" + newElement + "' has been added after '" + searchWord + "'");
         } else {
-            System.out.println("We couldn't add the element for you, somethign went wrong! Check the spelling of the menu item to add after.");
+            System.out.println("We couldn't add the element for you, something went wrong! Check the spelling of the menu item to add before.");
         }
     }
 

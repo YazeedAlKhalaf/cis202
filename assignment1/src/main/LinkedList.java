@@ -102,7 +102,30 @@ public class LinkedList<Type> {
         return searchedNode;
     }
 
-    public boolean insertBeforeElement(Type element) { return false; }
+    public boolean insertBeforeElement(Type elementToAddBefore, Type newElement) {
+        Node<Type> beforeSearchedNode = null;
+        Node<Type> searchedNode = head;
+        while (searchedNode != null) {
+            if (searchedNode.getElement().equals(elementToAddBefore)) { break; }
+
+            beforeSearchedNode = searchedNode;
+            searchedNode = searchedNode.getNext();
+        }
+        if (searchedNode == null) { return false; }
+
+        // this means that we are at the beginning, so use the insertAtFirst.
+        if (beforeSearchedNode == null) {
+            insertAtFirst(newElement);
+            return true;
+        }
+
+        Node<Type> newNode = new Node<>(newElement, searchedNode);
+        beforeSearchedNode.setNext(newNode);
+
+        size++;
+
+        return true;
+    }
 
     public boolean insertAfterElement(Type elementToAddAfter, Type newElement) {
         Node<Type> searchedNode = search(elementToAddAfter);
@@ -110,6 +133,8 @@ public class LinkedList<Type> {
 
         Node<Type> newNode = new Node<>(newElement, searchedNode.getNext());
         searchedNode.setNext(newNode);
+
+        size++;
 
         return true;
     }
