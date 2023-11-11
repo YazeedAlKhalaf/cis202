@@ -91,11 +91,28 @@ public class LinkedList<Type> {
         return nodeToBeDeleted.getElement();
     }
 
-    public Node<Type> search(Type element) { return null; }
+    public Node<Type> search(Type element) {
+        Node<Type> searchedNode = head;
+        while (searchedNode != null) {
+            if (searchedNode.getElement().equals(element)) { break; }
 
-    public void insertBeforeElement(Type element) {}
+            searchedNode = searchedNode.getNext();
+        }
 
-    public void insertAfterElement(Type element) {}
+        return searchedNode;
+    }
+
+    public boolean insertBeforeElement(Type element) { return false; }
+
+    public boolean insertAfterElement(Type elementToAddAfter, Type newElement) {
+        Node<Type> searchedNode = search(elementToAddAfter);
+        if (searchedNode == null) { return false; }
+
+        Node<Type> newNode = new Node<>(newElement, searchedNode.getNext());
+        searchedNode.setNext(newNode);
+
+        return true;
+    }
 
     @Override
     public String toString() {

@@ -117,7 +117,20 @@ public class Main {
 
     private static void insertBeforeElement() {}
 
-    private static void insertAfterElement() {}
+    private static void insertAfterElement() {
+        System.out.print("> Enter the name of the menu item to add the new item after: ");
+        String searchWord = input.nextLine();
+
+        System.out.print("> Enter the name of the menu item to add: ");
+        String newElement = input.nextLine();
+
+        boolean isSuccess = menuList.insertAfterElement(searchWord, newElement);
+        if (isSuccess) {
+            System.out.println("The new element '" + newElement + "' has been added after '" + searchWord + "'");
+        } else {
+            System.out.println("We couldn't add the element for you, somethign went wrong! Check the spelling of the menu item to add after.");
+        }
+    }
 
     private static void display() {
         menuList.display();
