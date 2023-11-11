@@ -44,7 +44,7 @@ public class Main {
                 "You just launched the most powerful menu app,",
                 "it saves your items using the linked list magic :)",
                 "",
-                "Made with {RED}<3{RESET} by https://github.com/YazeedAlKhalaf",
+                "Made with ❤️ by https://github.com/YazeedAlKhalaf",
         };
         BoxPrinter.printBoxedText(headerText);
     }
