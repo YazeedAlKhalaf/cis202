@@ -63,7 +63,7 @@ public class Stack<Type> {
         Node<Type> curr = top;
         do {
             sb.append(curr.getData());
-            if (curr.getNext() != null) { sb.append(", "); }
+            if (curr.getNext() != null) { sb.append(" <- "); }
             curr = curr.getNext();
         } while(curr != null);
 
