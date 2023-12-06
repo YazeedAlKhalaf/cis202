@@ -38,9 +38,9 @@ public class Queue<Type> {
         size++;
     }
 
-    public Type dequeue() throws EmptyQueueException {
+    public Type dequeue() {
         if (isEmpty()) {
-            throw new EmptyQueueException();
+            return null;
         }
 
         Node<Type> nodeToDequeue = front;
@@ -53,9 +53,9 @@ public class Queue<Type> {
         return nodeToDequeue.getData();
     }
 
-    public Type front() throws EmptyQueueException {
+    public Type front() {
         if (isEmpty()) {
-            throw new EmptyQueueException();
+            return null;
         }
 
         return front.getData();
@@ -66,5 +66,3 @@ public class Queue<Type> {
     public boolean isEmpty() { return size == 0; }
 
 }
-
-class EmptyQueueException extends Exception {}

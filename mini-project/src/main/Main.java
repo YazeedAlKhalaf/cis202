@@ -89,9 +89,11 @@ public class Main {
     private static void printHeader() {
         String[] headerText = new String[]{
                 "You just launched the most powerful menu app,",
-                "it saves your payments gateways using the linked list magic :)",
+                "it saves your payments gateways using the stack and queue magic :)",
                 "",
-                "Made with ❤️ by https://github.com/YazeedAlKhalaf",
+                "Made with ❤️ by:",
+                "- https://github.com/YazeedAlKhalaf",
+                "- https://github.com/",
         };
         BoxPrinter.printBoxedText(headerText);
     }
@@ -138,17 +140,48 @@ public class Main {
      // STACK STUFF //
     /////////////////
 
-    private static void stackPush() {}
+    private static void stackPush() {
+        System.out.print("> Enter the name of the payment gateway to push: ");
+        String name = input.nextLine();
+        System.out.print("> Enter the fees per transaction of the payment gateway to push: ");
+        double feesPerTx = input.nextDouble();
 
-    private static void stackPop() {}
+        PaymentGateway pg = new PaymentGateway(name, feesPerTx);
+        stack.push(pg);
+        System.out.println("'" + pg + "' has been pushed successfully!");
+    }
 
-    private static void stackTop() {}
+    private static void stackPop() {
+        PaymentGateway poppedElement =  stack.pop();
+        if (poppedElement == null) {
+            System.out.println("No element has been popped, please push an element first!");
+            return;
+        }
 
-    private static void stackIsEmpty() {}
+        System.out.println("'" + poppedElement + "' has been popped at first successfully!");
+    }
 
-    private static void stackSize() {}
+    private static void stackTop() {
+        PaymentGateway topElement = stack.top();
+        if (topElement == null) {
+            System.out.println("No element at top, please push an element first!");
+            return;
+        }
 
-    private static void stackDisplay() {}
+        System.out.println("'" + topElement + "' is the element at top!");
+    }
+
+    private static void stackIsEmpty() {
+        System.out.println(stack.isEmpty() ? "The stack is empty." : "The stack is not empty.");
+    }
+
+    private static void stackSize() {
+        System.out.println("The size of the stack is: " + stack.size());
+    }
+
+    private static void stackDisplay() {
+        stack.display();
+    }
 
       /////////////////
      // QUEUE STUFF //

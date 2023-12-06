@@ -27,9 +27,9 @@ public class Stack<Type> {
         size++;
     }
 
-    public Type pop() throws EmptyStackException {
+    public Type pop() {
         if (isEmpty()) {
-            throw new EmptyStackException();
+            return null;
         }
 
         Node<Type> nodeToPop = top;
@@ -39,9 +39,9 @@ public class Stack<Type> {
         return nodeToPop.getData();
     }
 
-    public Type top() throws EmptyStackException {
+    public Type top() {
         if (isEmpty()) {
-            throw new EmptyStackException();
+            return null;
         }
 
         return top.getData();
@@ -50,6 +50,29 @@ public class Stack<Type> {
     public int size() { return size; }
 
     public boolean isEmpty() { return size == 0; }
-}
 
-class EmptyStackException extends Exception {}
+    @Override
+    public String toString() {
+        if (top == null) {
+            return "[]";
+        }
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("[ ");
+
+        Node<Type> curr = top;
+        do {
+            sb.append(curr.getData());
+            if (curr.getNext() != null) { sb.append(", "); }
+            curr = curr.getNext();
+        } while(curr != null);
+
+        sb.append(" ]");
+
+        return sb.toString();
+    }
+
+    public void display() {
+        System.out.println(this);
+    }
+}
