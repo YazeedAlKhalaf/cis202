@@ -93,7 +93,7 @@ public class Main {
                 "",
                 "Made with ❤️ by:",
                 "- https://github.com/YazeedAlKhalaf",
-                "- https://github.com/",
+                "- https://github.com/Mohammed-bu",
         };
         BoxPrinter.printBoxedText(headerText);
     }
