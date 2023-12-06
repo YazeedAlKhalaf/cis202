@@ -158,7 +158,7 @@ public class Main {
             return;
         }
 
-        System.out.println("'" + poppedElement + "' has been popped at first successfully!");
+        System.out.println("'" + poppedElement + "' has been popped successfully!");
     }
 
     private static void stackTop() {
@@ -187,15 +187,46 @@ public class Main {
      // QUEUE STUFF //
     /////////////////
 
-    private static void queueEnqueue() {}
+    private static void queueEnqueue() {
+        System.out.print("> Enter the name of the payment gateway to enqueue: ");
+        String name = input.nextLine();
+        System.out.print("> Enter the fees per transaction of the payment gateway to enqueue: ");
+        double feesPerTx = input.nextDouble();
 
-    private static void queueDequeue() {}
+        PaymentGateway pg = new PaymentGateway(name, feesPerTx);
+        queue.enqueue(pg);
+        System.out.println("'" + pg + "' has been enqueued successfully!");
+    }
 
-    private static void queueFront() {}
+    private static void queueDequeue() {
+        PaymentGateway poppedElement =  queue.dequeue();
+        if (poppedElement == null) {
+            System.out.println("No element has been dequeued, please enqueue an element first!");
+            return;
+        }
 
-    private static void queueIsEmpty() {}
+        System.out.println("'" + poppedElement + "' has been dequeued successfully!");
+    }
 
-    private static void queueSize() {}
+    private static void queueFront() {
+        PaymentGateway frontElement = queue.front();
+        if (frontElement == null) {
+            System.out.println("No element at top, please enqueue an element first!");
+            return;
+        }
 
-    private static void queueDisplay() {}
+        System.out.println("'" + frontElement + "' is the element at front!");
+    }
+
+    private static void queueIsEmpty() {
+        System.out.println(queue.isEmpty() ? "The queue is empty." : "The queue is not empty.");
+    }
+
+    private static void queueSize() {
+        System.out.println("The size of the queue is: " + queue.size());
+    }
+
+    private static void queueDisplay() {
+        queue.display();
+    }
 }

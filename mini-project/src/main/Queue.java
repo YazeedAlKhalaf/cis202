@@ -65,4 +65,28 @@ public class Queue<Type> {
 
     public boolean isEmpty() { return size == 0; }
 
+    @Override
+    public String toString() {
+        if (front == null) {
+            return "[]";
+        }
+
+        StringBuilder sb = new StringBuilder();
+        sb.append("[ ");
+
+        Node<Type> curr = front;
+        do {
+            sb.append(curr.getData());
+            if (curr.getNext() != null) { sb.append(", "); }
+            curr = curr.getNext();
+        } while(curr != null);
+
+        sb.append(" ]");
+
+        return sb.toString();
+    }
+
+    public void display() {
+        System.out.println(this);
+    }
 }
